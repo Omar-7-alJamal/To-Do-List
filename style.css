@@ -8,8 +8,7 @@ body {
   direction: rtl;
   background-color: #f5f7fa;
   margin: 0;
-  /* لمنع المحتوى من الاختباء خلف الفوتر الثابت */
-  padding-bottom: 80px; /* يناسب ارتفاع الفوتر أدناه */
+  padding-bottom: 80px; 
 }
 
 /* ===================== */
