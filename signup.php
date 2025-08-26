@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>إنشاء حساب</title>
+    <title>Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <header>
     <nav class="navbar navbar-dark bg-primary shadow">
         <div class="container-fluid d-flex justify-content-between align-items-center px-4">
-            <span class="navbar-brand mb-0 h1 fw-bold">تطبيق قائمة المهام</span>
+            <span class="navbar-brand mb-0 h1 fw-bold">To Do List App</span>
         </div>
     </nav>
 </header>
@@ -51,7 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST">
             <input type="text" name="username" class="form-control mb-3" placeholder="البريد الإلكتروني" required>
             <input type="password" name="password" class="form-control mb-3" placeholder="كلمة المرور" required>
-            <button type="submit" class="btn btn-primary w-100">إنشاء الحساب</button>
+            <input type="confirmPassword" name="password" class="form-control mb-3" placeholder="كلمة المرور" required>
+            <button type="submit" class="btn btn-primary w-100">Creat Account</button>
         </form>
 
         <p class="text-center mt-3 text-muted">لديك حساب؟ <a href="login.php">تسجيل الدخول</a></p>
