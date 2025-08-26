@@ -1,0 +1,180 @@
+/* إعدادات عامة */
+html {
+  font-size: 18px; /* تكبير عام لكل الصفحة */
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  direction: rtl;
+  background-color: #f5f7fa;
+  margin: 0;
+  /* لمنع المحتوى من الاختباء خلف الفوتر الثابت */
+  padding-bottom: 80px; /* يناسب ارتفاع الفوتر أدناه */
+}
+
+/* ===================== */
+/*        NAVBAR         */
+/* ===================== */
+
+/* لا نستخدم .navbar العامة مع padding مختلف لتفادي التعارض */
+.navbar.bg-primary {
+  background-color: #0d6efd !important;
+  padding-top: 16px;   /* سُمك الهيدر */
+  padding-bottom: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* حاوية داخلية: مسافة عن الحواف وتوسيط المحتوى */
+.navbar .container-fluid {
+  padding-right: 24px;
+  padding-left: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* عنوان التطبيق في الهيدر */
+.navbar .navbar-brand {
+  color: #ffffff !important;
+  font-size: 32px;       /* واضح وكبير */
+  font-weight: 700;
+  margin: 0;
+}
+
+/* زر تسجيل الخروج (id موجود في index.php) */
+#logoutBtn {
+  background-color: #dc3545; /* أحمر */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+#logoutBtn:hover,
+#logoutBtn:focus {
+  background-color: #b52a37;
+  color: #ffffff;
+}
+
+/* ===================== */
+/*       MAIN / FORMS    */
+/* ===================== */
+
+/* الكارد (في قائمة المهام + صفحات الدخول/التسجيل) */
+.card {
+  border-radius: 10px;
+  overflow: hidden; /* حواف ناعمة للقائمة */
+}
+
+/* رسالة القائمة الفارغة داخل الكارد */
+.card .text-muted {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/* مدخل النصوص عامة */
+.form-control {
+  text-align: right;
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* أزرار عامة */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+/* نموذج إضافة المهمة أسفل القائمة (index.php) */
+form[action*="action=add"] .btn-success {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+form[action*="action=add"] .form-control {
+  font-size: 1rem;
+  padding: 10px;
+}
+
+/* عناصر قائمة المهام */
+.list-group-item {
+  background-color: #fff;
+  font-size: 16px;
+  padding: 12px 15px;
+}
+
+/* أزرار الإجراءات الصغيرة في القائمة (تم/حذف) */
+.btn-sm {
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+/* ===================== */
+/*      AUTH PAGES       */
+/* ===================== */
+
+/* تمركز الوسط لصفحات login/signup */
+.full-height-center {
+  min-height: calc(100vh - 180px); /* يعوّض الهيدر والفوتر */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12px; /* تنفّس بسيط في الشاشات الصغيرة */
+}
+
+/* ===================== */
+/*        FOOTER         */
+/* ===================== */
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 18px;
+  text-align: center;
+  z-index: 10;
+}
+
+/* ===================== */
+/*      RESPONSIVE       */
+/* ===================== */
+
+@media (max-width: 576px) {
+  .navbar .container-fluid {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .navbar .navbar-brand {
+    font-size: 24px; /* أصغر شوي للموبايل */
+  }
+
+  #logoutBtn {
+    padding: 8px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  /* تكبير طفيف للنص في الموبايل لسهولة القراءة */
+  .form-control,
+  .btn,
+  .btn-sm {
+    font-size: 15px;
+  }
+}
