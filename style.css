@@ -4,7 +4,6 @@ html {
 
 body {
   font-family: 'Arial', sans-serif;
-  direction: rtl;
   background-color: #f5f7fa;
   margin: 0;
   padding-bottom: 80px; 
@@ -12,7 +11,7 @@ body {
 /* Header */
 .navbar.bg-primary {
   background-color: #0d6efd !important;
-  padding-top: 16px;   /* سُمك الهيدر */
+  padding-top: 16px;   
   padding-bottom: 16px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
@@ -35,7 +34,7 @@ body {
 
 /* logout btn*/
 #logoutBtn {
-  background-color: #dc3545; /* أحمر */
+  background-color: #dc3545; 
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -60,23 +59,23 @@ body {
 /* the empty state */
 .card .text-muted {
   font-size: 1.1rem;
-  font-style: italic;
+  color: #6c757d;
 }
 
 /* حاوية الصفحة: وسط عمودي وأفقي + حساب ارتفاع الفوتر */
 main.full-height-center {
-  min-height: calc(100vh - 140px); /* عدّل الرقم لو عندك هيدر أعلى أو فوتر أعلى */
+  min-height: calc(100vh - 140px); 
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 12px; /* يمنع الالتصاق بحواف الشاشة */
+  padding: 16px 12px; 
   box-sizing: border-box;
 }
 
 /* الكارد نفسه: عرض مناسب + ظل خفيف + إلغاء تأثير أي max-width inline */
 main.full-height-center .card {
   width: 100%;
-  max-width: 460px !important;  /* يتجاوز style="max-width: 400px" */
+  max-width: 460px !important;  
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
@@ -90,23 +89,21 @@ main.full-height-center .card h4 {
 
 /* المدخلات والأزرار داخل الكارد */
 main.full-height-center .card .form-control {
-  height: 44px;            /* ارتفاع مريح */
+  height: 44px;           
   font-size: 16px;
 }
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
 
 main.full-height-center .card .btn {
   height: 44px;
   font-size: 16px;
   font-weight: 700;
 }
-
-/*the form inputs*/
-.form-control {
-  text-align: right;
-  font-size: 16px;
-  padding: 10px;
-}
-
 .btn-primary {
   background-color: #007bff;
   border: none;
@@ -133,28 +130,20 @@ form[action*="action=add"] .form-control {
   padding: 12px 15px;
 }
 
-/* أزرار الإجراءات الصغيرة في القائمة (تم/حذف) */
 .btn-sm {
   font-size: 14px;
   padding: 6px 12px;
 }
 
-/* ===================== */
-/*      AUTH PAGES       */
-/* ===================== */
 
 /* تمركز الوسط لصفحات login/signup */
 .full-height-center {
-  min-height: calc(100vh - 180px); /* يعوّض الهيدر والفوتر */
+  min-height: calc(100vh - 180px); 
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 12px; /* تنفّس بسيط في الشاشات الصغيرة */
+  padding: 0 12px; 
 }
-
-/* ===================== */
-/*        FOOTER         */
-/* ===================== */
 
 footer {
   position: fixed;
@@ -168,10 +157,6 @@ footer {
   z-index: 10;
 }
 
-/* ===================== */
-/*      RESPONSIVE       */
-/* ===================== */
-
 @media (max-width: 576px) {
   .navbar .container-fluid {
     padding-right: 16px;
@@ -179,7 +164,7 @@ footer {
   }
 
   .navbar .navbar-brand {
-    font-size: 24px; /* أصغر شوي للموبايل */
+    font-size: 24px; 
   }
 
   #logoutBtn {
@@ -192,7 +177,6 @@ footer {
     max-width: 100%;
   }
 
-  /* تكبير طفيف للنص في الموبايل لسهولة القراءة */
   .form-control,
   .btn,
   .btn-sm {

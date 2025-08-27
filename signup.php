@@ -1,11 +1,20 @@
 <?php include 'config.php'; ?>
 <?php
 $message = '';
+$alertType = 'danger';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
 
-    if ($username && $password) {
+    if (strlen($username) < 4) {
+        $message = "Username must be at least 4 characters.";
+    } elseif (strlen($password) < 8) {
+        $message = "Password must be at least 8 characters.";
+    } elseif ($password !== $confirmPassword) {
+        $message = "Passwords do not match.";
+    } else {
         $hashed = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
         $stmt->bind_param("ss", $username, $hashed);
@@ -14,10 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: login.php");
             exit();
         } else {
-            $message = "هذا المستخدم موجود مسبقًا.";
+            $message = "This user is already registered.";
+            $alertType = 'warning';
         }
-    } else {
-        $message = "يرجى إدخال بيانات صحيحة.";
     }
 }
 ?>
@@ -42,25 +50,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <main class="container full-height-center">
     <div class="card w-100" style="max-width: 400px;">
-        <h4 class="text-center mb-4 text-primary">إنشاء حساب جديد</h4>
+        <h4 class="text-center mb-4 text-primary">Create Account</h4>
 
         <?php if ($message): ?>
-            <div class="alert alert-warning text-center"><?= htmlspecialchars($message) ?></div>
+            <div class="alert alert-<?= $alertType ?> text-center"><?= htmlspecialchars($message) ?></div>
         <?php endif; ?>
 
         <form method="POST">
-            <input type="text" name="username" class="form-control mb-3" placeholder="البريد الإلكتروني" required>
-            <input type="password" name="password" class="form-control mb-3" placeholder="كلمة المرور" required>
-            <input type="confirmPassword" name="password" class="form-control mb-3" placeholder="كلمة المرور" required>
-            <button type="submit" class="btn btn-primary w-100">Creat Account</button>
+            <input type="text" name="username" class="form-control mb-3" placeholder="Username" required>
+            <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+            <input type="password" name="confirmPassword" class="form-control mb-3" placeholder="Confirm Password" required>
+            <button type="submit" class="btn btn-primary w-100">Create Account</button>
         </form>
 
-        <p class="text-center mt-3 text-muted">لديك حساب؟ <a href="login.php">تسجيل الدخول</a></p>
+        <p class="text-center mt-3 text-muted">You already have an account? <a href="login.php">Login</a></p>
     </div>
 </main>
 
 <footer>
-    تم التطوير بواسطة الطالب: عمر عبد الرحمن يوسف الجمل - <strong>1320225259</strong>
+    Developed by: Omar Abd alRahaman Yosuf alJamal - <strong>1320225259</strong>
 </footer>
 
 </body>
