@@ -11,14 +11,20 @@ if (!$userId) {
 }
 
 switch ($action) {
-    case 'add':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty(trim($_POST['title']))) {
-            $title = trim($_POST['title']);
-            $stmt = $conn->prepare("INSERT INTO tasks (title, user_id) VALUES (?, ?)");
-            $stmt->bind_param("si", $title, $userId);
-            $stmt->execute();
-        }
-        break;
+   case 'add':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty(trim($_POST['title']))) {
+        $userId = $_SESSION['user_id'];
+        $title = trim($_POST['title']);
+        $description = trim($_POST['description']);
+        $importance = $_POST['importance'];
+        $due_date = $_POST['due_date'];
+        $category = trim($_POST['category']);
+
+        $stmt = $conn->prepare("INSERT INTO tasks (title, description, importance, due_date, category, user_id) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssi", $title, $description, $importance, $due_date, $category, $userId);
+        $stmt->execute();
+    }
+    break;
 
     case 'update':
         if ($id !== null) {
@@ -39,3 +45,4 @@ switch ($action) {
 
 header("Location: index.php");
 exit();
+
