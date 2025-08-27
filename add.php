@@ -13,7 +13,7 @@
 
   <!-- Header -->
   <header>
-    <nav class="navbar navbar-dark bg-primary shadow">
+    <nav class="navbar navbar-dark bg-primary shadow fixed-top">
       <div class="container-fluid d-flex justify-content-between align-items-center">
         <span class="navbar-brand mb-0 h1">To Do List App</span>
         <a href="index.php" class="btn btn-warning fw-bold" id="logoutBtn">Back</a>

@@ -7,7 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
 
-    if (strlen($password) < 8) {
+    // التحقق من صيغة اسم المستخدم
+    if (!preg_match('/^[a-zA-Z][a-zA-Z0-9_]{3,19}$/', $username)) {
+        $message = "Username must start with a letter and be 4 or above characters using letters, numbers, or underscores only.";
+    }
+    // التحقق من طول كلمة المرور
+    elseif (strlen($password) < 8) {
         $message = "Password must be at least 8 characters.";
     } else {
         $stmt = $conn->prepare("SELECT id, password FROM users WHERE username = ?");
@@ -31,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <header>
-    <nav class="navbar navbar-dark bg-primary shadow">
+    <nav class="navbar navbar-dark bg-primary shadow fixed-top">
         <div class="container-fluid d-flex justify-content-between align-items-center px-4">
             <span class="navbar-brand mb-0 h1 fw-bold">To Do List App</span>
         </div>
@@ -60,7 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <form method="POST">
-            <input type="text" name="username" class="form-control mb-3" placeholder="Username" required>
+            <input type="text" name="username" class="form-control mb-3" placeholder="Username"
+            pattern="^[a-zA-Z][a-zA-Z0-9_]{3,19}$"
+            title="Username must start with a letter and be 4-20 characters with letters, numbers, or underscores" required>
             <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
             <button type="submit" class="btn btn-primary w-100">Log in</button>
         </form>
