@@ -1,15 +1,16 @@
 <?php
 include 'config.php';
-
+// get data from database
 $userId = $_SESSION['user_id'] ?? null;
 $action = $_GET['action'] ?? '';
 $id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
+// check if user is logged in
 if (!$userId) {
     header("Location: login.php");
     exit();
 }
-
+// perform action
 switch ($action) {
    case 'add':
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty(trim($_POST['title']))) {
@@ -35,7 +36,6 @@ switch ($action) {
         $importance = $_POST['importance'];
         $due_date = $_POST['due_date'];
         $category = trim($_POST['category']);
-
         $stmt = $conn->prepare("
             UPDATE tasks 
             SET title = ?, description = ?, importance = ?, due_date = ?, category = ? 

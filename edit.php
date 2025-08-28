@@ -1,20 +1,20 @@
 <?php
 include 'config.php';
 
-// تأكّد أن المستخدم مسجل
+// check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
 
-// احصل على ID المهمة من الرابط
+// git id
 $id = $_GET['id'] ?? null;
 if (!$id) {
     header('Location: index.php');
     exit;
 }
 
-// جلب بيانات المهمة من قاعدة البيانات
+// get data from database
 $stmt = $conn->prepare("SELECT * FROM tasks WHERE id = ? AND user_id = ?");
 $stmt->bind_param("ii", $id, $_SESSION['user_id']);
 $stmt->execute();
@@ -50,7 +50,7 @@ $task = $result->fetch_assoc();
     </nav>
   </header>
 
-  <!-- Main Content (Form مشابه لـ add.php) -->
+  <!-- Main Content -->
   <main class="container full-height-center">
     <div class="card">
       <h4 class="text-center">Edit Task</h4>

@@ -1,5 +1,6 @@
 <?php include 'config.php'; ?>
 <?php
+// get data from database
 $message = '';
 $alertType = 'danger';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -7,15 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
 
-    // التحقق من صيغة اسم المستخدم
+    // check username
     if (!preg_match('/^[a-zA-Z][a-zA-Z0-9_]{3,19}$/', $username)) {
         $message = "Username must start with a letter and be 4 or above characters using letters, numbers, or underscores only.";
     }
-    // التحقق من طول كلمة المرور
+    // check password
     elseif (strlen($password) < 8) {
         $message = "Password must be at least 8 characters.";
     }
-    // التحقق من تطابق كلمتي المرور
+    // check confemation password
     elseif ($password !== $confirmPassword) {
         $message = "Passwords do not match.";
     }
@@ -23,13 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hashed = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
         $stmt->bind_param("ss", $username, $hashed);
-
-        if ($stmt->execute()) {
-            header("Location: login.php");
-            exit();
-        } else {
-            $message = "This user is already registered.";
-            $alertType = 'warning';
+    // check if user already exists
+    if ($stmt->execute()) {
+        $_SESSION['user_id'] = $conn->insert_id;
+        header("Location: index.php");
+        exit();
+    } else {
+        $message = "This user is already registered.";
+        $alertType = 'warning';
         }
     }
 }
@@ -45,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-
+<!-- Header -->
 <header>
     <nav class="navbar navbar-dark bg-primary shadow fixed-top">
         <div class="container-fluid d-flex justify-content-between align-items-center px-4">
@@ -53,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
 </header>
-
+<!-- Main Content -->
 <main class="container full-height-center">
     <div class="card w-100" style="max-width: 400px;">
         <h4 class="text-center mb-4 text-primary">Create Account</h4>
@@ -74,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="text-center mt-3 text-muted">You already have an account? <a href="login.php">Login</a></p>
     </div>
 </main>
-
+<!-- Footer -->
 <footer>
     Developed by: Omar Abd alRahaman Yosuf alJamal - <strong>1320225259</strong>
 </footer>

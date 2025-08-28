@@ -1,21 +1,21 @@
 html {
-  font-size: 18px; 
+  font-size: 18px;
 }
 
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f5f7fa;
   margin: 0;
-  padding-bottom: 80px; 
+  padding-bottom: 80px; /* Space for footer */
 }
-/* Header */
+
+/* Header styling */
 .navbar.bg-primary {
   background-color: #0d6efd !important;
-  padding-top: 16px;   
+  padding-top: 16px;
   padding-bottom: 16px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
-
 
 .navbar .container-fluid {
   padding-right: 24px;
@@ -27,14 +27,14 @@ body {
 
 .navbar .navbar-brand {
   color: #ffffff !important;
-  font-size: 32px;       
+  font-size: 32px;
   font-weight: 700;
   margin: 0;
 }
 
-/* logout btn*/
+/* Logout button styling */
 #logoutBtn {
-  background-color: #dc3545; 
+  background-color: #dc3545;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -51,54 +51,69 @@ body {
   background-color: #b52a37;
   color: #ffffff;
 }
-/* أزرار الفلترة */
+
+/* filter buttons styling */
 .filter-buttons .btn {
-    min-width: 110px;
-    font-weight: bold;
-    border-radius: 20px;
-    transition: all 0.3s ease;
+  min-width: 110px;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: all 0.3s ease;
 }
 
-/* الزر النشط */
+/* active filter button styling */
 .filter-buttons .btn.active {
-    background-color: #0d6efd;
-    color: #fff;
-    border-color: #0d6efd;
+  background-color: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
 }
- 
+
+/* card styling */
 .card {
   border-radius: 10px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
-/* the empty state */
+/* empty task state */
 .card .text-muted {
   font-size: 14px;
   color: #6c757d;
 }
 
 
-/* حاوية الصفحة: وسط عمودي وأفقي + حساب ارتفاع الفوتر */
 main.full-height-center {
-  min-height: calc(100vh - 140px); 
+  min-height: calc(100vh - 140px); /* Adjust for header and footer */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 12px; 
+  padding: 16px 12px;
   box-sizing: border-box;
 }
+
+/* card styling */
+main.full-height-center .card {
+  width: 100%;
+  max-width: 460px !important;
+  padding: 24px;
+  margin-top: 60px; /* Prevent overlap with header */
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+/* task title in list */
 .task-header h5 {
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0;
 }
 
+/* badge styling*/
 .task-header .badge {
   font-size: 0.85rem;
   padding: 6px 12px;
   border-radius: 10px;
 }
 
+/* Action buttons inside task list styling */
 .list-group-item .btn.badge {
   font-size: 0.85rem;
   padding: 6px 12px;
@@ -107,39 +122,33 @@ main.full-height-center {
   font-weight: 600;
 }
 
-
-/* الكارد نفسه: عرض مناسب + ظل خفيف + إلغاء تأثير أي max-width inline */
-main.full-height-center .card {
-  width: 100%;
-  max-width: 460px !important;  
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
-}
-
-/* عنوان الكارد */
+/* card title styling */
 main.full-height-center .card h4 {
   margin-bottom: 18px;
   font-weight: 700;
 }
 
-/* المدخلات والأزرار داخل الكارد */
+/* form input fields inside card styling */
 main.full-height-center .card .form-control {
-  height: 44px;           
+  height: 44px;
   font-size: 16px;
 }
+
+/* buttons inside card styling*/
+main.full-height-center .card .btn {
+  height: 44px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* remove underline from all links */
 a,
 a:hover,
 a:focus {
   text-decoration: none;
 }
 
-
-main.full-height-center .card .btn {
-  height: 44px;
-  font-size: 16px;
-  font-weight: 700;
-}
+/* primary button styling */
 .btn-primary {
   background-color: #007bff;
   border: none;
@@ -147,47 +156,51 @@ main.full-height-center .card .btn {
   padding: 10px 20px;
 }
 
+/* add task form button styling */
 form[action*="action=add"] .btn-success {
   font-size: 1rem;
   padding: 10px 20px;
   border-radius: 8px;
 }
 
+/* input fields inside add task form styling */
 form[action*="action=add"] .form-control {
   font-size: 1rem;
   padding: 10px;
 }
 
-/* عناصر قائمة المهام */
+/* task list item styling */
 .list-group-item {
   background-color: #fff;
   font-size: 16px;
   padding: 12px 15px;
 }
 
+/* small button styling */
 .btn-sm {
   font-size: 14px;
   padding: 6px 12px;
 }
-/* زر إضافة مهمة */
+
+/* add task button styling */
 .btn.btn-primary.fw-bold {
-    transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .btn.btn-primary.fw-bold:hover {
-    background-color: #0069d9;
+  background-color: #0069d9;
 }
 
-
-/* تمركز الوسط لصفحات login/signup */
+/*  login and signup pages styling */
 .full-height-center {
-  min-height: calc(100vh - 180px); 
+  min-height: calc(100vh - 180px);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 12px; 
+  padding: 0 12px;
 }
 
+/* Footer styling */
 footer {
   position: fixed;
   width: 100%;
@@ -200,11 +213,13 @@ footer {
   z-index: 10;
 }
 
+/* Remove padding from section if using .py-5 */
 .py-5 {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
+/* Responsive */
 @media (max-width: 576px) {
   .navbar .container-fluid {
     padding-right: 16px;
@@ -212,7 +227,7 @@ footer {
   }
 
   .navbar .navbar-brand {
-    font-size: 24px; 
+    font-size: 24px;
   }
 
   #logoutBtn {
@@ -230,13 +245,14 @@ footer {
   .btn-sm {
     font-size: 15px;
   }
-   main.full-height-center {
-    min-height: calc(100vh - 160px); /* زيادة بسيطة للأمان مع الفوتر الثابت */
+
+  main.full-height-center {
+    min-height: calc(100vh - 160px);
     padding: 20px 12px;
   }
+
   main.full-height-center .card {
     max-width: 100% !important;
     padding: 20px;
   }
 }
-
