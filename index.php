@@ -37,7 +37,7 @@ if ($filter === 'completed') {
             id DESC
     ");
 } else {
-    // ordering
+    // ordering the tasks in the list
     $stmt = $conn->prepare("
         SELECT * FROM tasks 
         WHERE user_id = ? 
